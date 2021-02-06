@@ -11,7 +11,7 @@ output:
 ## Overview
 
 -   Hands on examples
--   Repo:
+-   Repo: https://github.com/skirmer/functions_r
 -   Support Team for questions
 
 <div class="notes">
