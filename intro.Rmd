@@ -1,0 +1,311 @@
+---
+title: "Introduction to R Functions"
+subtitle: "R Ladies Chicago and R Ladies Lansing"
+author: "Stephanie Kirmer <BR> [www.stephaniekirmer.com](http://www.stephaniekirmer.com) <BR> @[data_stephanie](http://www.twitter.com/data_stephanie)"
+date: "February 26, 2021"
+output:
+    ioslides_presentation:
+        widescreen: true
+---
+
+## Overview
+
+-   Hands on examples
+-   Repo:
+-   Support Team for questions
+
+<div class="notes">
+</div>
+
+## What is Function Anyway?
+
+![](function_diagram.png){width=80%}
+
+<div class="notes">
+You have one thing, and you want to have another thing, so the function is your path to get there.
+</div>
+
+
+## Why Functions?
+
+-   Avoid repetition
+-   Share code with others
+-   Eventually build packages
+
+<div class="notes">
+Those operations you want to run in order to get from what you have to what you need are useful to others!
+This framework is common to many programming languages
+</div>
+
+
+## Basic Structure
+
+```{r, echo=TRUE, eval=FALSE}
+
+myFunction <- function(){
+  ...
+  return()
+}
+
+myFunction()
+```
+
+<div class="notes">
+This shell is what lets R know that you intend to create a function. 
+Now we need to add in the contents.
+</div>
+
+
+## Basic Structure
+
+```{r, echo=TRUE, eval=FALSE}
+
+myFunction <- function(ARGUMENTS){
+ ### <b>
+  ...
+ ### </b> 
+  return(OUTPUT)
+}
+
+myFunction(ARGUMENTS)
+```
+
+<div class="notes">
+</div>
+
+
+## Basic Structure
+
+```{r, echo=TRUE, eval=FALSE}
+
+myFunction <- function(a, b){
+ ### <b>
+  c <- a*b
+ ### </b> 
+  return(c)
+}
+
+myFunction(a = 2,b = 4)
+```
+
+<div class="notes">
+</div>
+
+### Practice Break
+Open possible_dog_part1.R and follow the instructions.
+
+## Types
+- Logical or Boolean (TRUE, FALSE, 0, 1)
+- Integer (3, 7, 108)
+- Float or Numeric (1.6645, 3.14159, 987.99)
+- String or Character ("Hello", "a")
+
+<div class="notes">
+Before we deep dive into these pieces, we have to make sure we understand types just a little.
+</div>
+
+
+## Arguments, or What Goes In
+
+- Order and naming
+- Defaults
+
+```{r, echo=TRUE, eval=FALSE}
+
+myFunction <- function(a=1, b=1){
+
+  ...
+
+myFunction(a = 2,b = 4)
+```
+
+<div class="notes">
+You can set default values for the arguments as shown
+Your arguments need to observe a specific type usually
+</div>
+
+### Practice Break
+Open possible_dog_part2.R and follow the instructions.
+
+
+## Returns, or What Comes Out
+
+
+```{r, echo=TRUE, eval=FALSE}
+
+myFunction <- function(a, b){
+...
+  return(c)
+}
+
+```
+
+<div class="notes">
+</div>
+
+### Practice Break
+Open possible_dog_part3.R and follow the instructions.
+
+
+## Guardrails: Documentation
+
+```{r, echo=TRUE, eval=FALSE}
+#' myFunction
+#'
+#' @param a Type. Description of what it represents.
+#' @param b Type. Description of what it represents.
+#'
+#' @return Type. Description of what it represents.
+#'
+#' @examples
+#' \dontrun{myFunction(a = 5, b = 3)}
+```
+
+
+<div class="notes">
+</div>
+
+### Practice Break
+Open possible_dog_part4.R and follow the instructions.
+
+
+## Guardrails: Type Check
+
+```{r, echo=TRUE, eval=FALSE}
+
+myFunction <- function(a, b){
+  if(!is.numeric(a)) stop("a must be a number")
+  c <- a*b
+  return(c)
+}
+
+myFunction(a = 2,b = 4)
+#myFunction(a = TRUE, b = 4)
+```
+
+<div class="notes">
+</div>
+
+## Guardrails: Tests
+
+```{r, echo=TRUE, eval=TRUE}
+
+library(testthat)
+myFunction <- function(a, b){
+  if(!is.numeric(a)) stop("a must be a number")
+  c <- a*b
+  return(c)
+}
+
+test_that("Function returns correct value",
+          {
+            product = myFunction(a = 2,b = 4)
+            expect_equal(product, 8)
+            
+          })
+```
+
+<div class="notes">
+</div>
+
+
+## Guardrails: Tests
+
+```{r, echo=TRUE, eval=TRUE}
+
+library(testthat)
+
+test_that("Function returns expected error",
+          {
+            expect_error(myFunction(a = TRUE, b = 4))
+          })
+```
+
+<div class="notes">
+</div>
+
+
+## Environment
+
+The function knows what exists inside itself, and what exists in the "global" environment.
+Outside the function only knows what exists in the "global".
+Here, a, b, and c do not exist in the world outside our function.
+
+```{r, echo=TRUE, eval=FALSE}
+
+print(environment())
+print(objects())
+myFunction <- function(a, b){
+ ### <b>
+  c <- a*b
+ ### </b> 
+  print(environment())
+  print(objects())
+  return(c)
+}
+
+myFunction(a = 2,b = 4)
+```
+
+## Global Environment
+
+```{r, echo=TRUE, eval=TRUE}
+
+print(environment())
+print(objects())
+
+```
+
+## Function Environment
+
+```{r, echo=TRUE, eval=TRUE}
+
+myFunction <- function(a, b){
+ ### <b>
+  c <- a*b
+ ### </b> 
+  print(environment())
+  print(objects())
+  return(c)
+}
+
+myFunction(a = 2,b = 4)
+```
+
+## Exploring
+
+```{r, echo=TRUE, eval=TRUE}
+dplyr::top_n
+
+```
+
+
+## Combining Functions
+- A function can be an argument to another function
+- This way you can chain together elements powerfully
+
+```{r, echo=TRUE, eval=TRUE}
+
+a <- sum(1, 5, 3)
+b <- max(a, 4)
+b
+
+c <- max(sum(1, 5, 3), 4)
+c
+```
+
+
+<div class="notes">
+</div>
+
+## Conclusion
+
+- Functions are a way of packaging small sections of code to reuse later
+- Functions accept input and return output, and contain code
+- Functions can have documentation and internal tests
+
+## Further Reading
+* http://adv-r.had.co.nz/Functions.html
+* https://r4ds.had.co.nz/functions.html
+* https://nicercode.github.io/guides/functions/
+* https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Writing-your-own-functions
