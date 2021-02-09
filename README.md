@@ -1,6 +1,6 @@
 # Functions in R
 
-This repo contains the materials for my 2 hour workshop on functions in R. Follow `intro.html` to see the materials for yourself!
+This repo contains the materials for my 2 hour workshop on functions in R. Check out `intro.html` to see the materials for yourself!
 
 
 
