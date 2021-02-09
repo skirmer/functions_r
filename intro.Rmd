@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R Functions"
-subtitle: "R Ladies Chicago and R Ladies Lansing"
+subtitle: "R Ladies Chicago and R Ladies East Lansing"
 author: "Stephanie Kirmer <BR> [www.stephaniekirmer.com](http://www.stephaniekirmer.com) <BR> @[data_stephanie](http://www.twitter.com/data_stephanie)"
 date: "February 26, 2021"
 output:
@@ -17,7 +17,7 @@ output:
 <div class="notes">
 </div>
 
-## What is Function Anyway?
+## What is a Function Anyway?
 
 ![](function_diagram.png){width=80%}
 
@@ -91,7 +91,7 @@ myFunction(a = 2,b = 4)
 <div class="notes">
 </div>
 
-### Practice Break
+# Practice Break
 Open possible_dog_part1.R and follow the instructions.
 
 ## Types
@@ -124,7 +124,7 @@ You can set default values for the arguments as shown
 Your arguments need to observe a specific type usually
 </div>
 
-### Practice Break
+# Practice Break
 Open possible_dog_part2.R and follow the instructions.
 
 
@@ -143,7 +143,7 @@ myFunction <- function(a, b){
 <div class="notes">
 </div>
 
-### Practice Break
+# Practice Break
 Open possible_dog_part3.R and follow the instructions.
 
 
@@ -165,7 +165,7 @@ Open possible_dog_part3.R and follow the instructions.
 <div class="notes">
 </div>
 
-### Practice Break
+# Practice Break
 Open possible_dog_part4.R and follow the instructions.
 
 
