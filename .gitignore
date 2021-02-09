@@ -4,6 +4,7 @@
 
 # Session Data files
 .RData
+.RProj
 
 # User-specific files
 .Ruserdata
