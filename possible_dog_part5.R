@@ -1,20 +1,21 @@
 ### Beginner Task ###
-# Fill in the blanks in the docstrings
+# Run the function, but make it fail the type check.
 # https://www.guinnessworldrecords.com/news/2019/4/a-history-of-the-biggest-and-smallest-dog-breeds-from-giant-great-danes-to-tiny
 
 
 #' dogCheck
 #'
 #' @param height_cm Integer. Dog's height from floor to shoulder, rounded to the nearest centimeter.
-#' @param has_fur Boolean. [INSERT DESCRIPTION HERE]
+#' @param has_fur Boolean. Indicates whether the animal has fur.
 #'
-#' @return List. Animal's parameters and a boolean indicating [FINISH THIS SENTENCE]
+#' @return List. Animal's parameters and a boolean indicating whether animal might be a dog.
 #'
 #' @examples
 #' \dontrun{dogCheck(height_cm = 50, has_fur = TRUE)}
 
 dogCheck <- function(height_cm, has_fur) {
   params <- paste0("Fur:", has_fur, ", Height (cm):", height_cm)
+  if(!is.double(height_cm)) stop("Height must be a number")
   
   if(has_fur == TRUE){
     if(height_cm < 112 & height_cm > 9){
@@ -29,9 +30,9 @@ dogCheck <- function(height_cm, has_fur) {
 dogCheck(height_cm = 50, has_fur = TRUE)
 
 ### Advanced Task ###
-# Begin with the function you created in Parts 1-3. 
-# Add docstrings to explain what it does. 
-# Don't forget the inputs and returns!
+# Begin with the function you created in Parts 1-4. 
+# Add a type check to assert what the input type must be.
+# Some type options: logical, integer, double, character. Check ?mode and ?type to learn more.
 
 myFunction <- function(){
   

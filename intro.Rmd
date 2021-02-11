@@ -1,44 +1,67 @@
 ---
 title: "Introduction to R Functions"
 subtitle: "R Ladies Chicago and R Ladies East Lansing"
-author: "Stephanie Kirmer <BR> [www.stephaniekirmer.com](http://www.stephaniekirmer.com) <BR> @[data_stephanie](http://www.twitter.com/data_stephanie)"
+author: "Stephanie Kirmer <BR> [www.stephaniekirmer.com](http://www.stephaniekirmer.com) <BR>  @[data_stephanie](http://www.twitter.com/data_stephanie)"
 date: "February 26, 2021"
 output:
-    ioslides_presentation:
-        widescreen: true
+  xaringan::moon_reader:
+    css: ['xaringan-themer.css'] 
+    nature:
+      highlightLines: true
+
 ---
 
-## Overview
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#23395b",
+  secondary_color = "#136f63",
+  header_font_google = google_font("Fira Sans"),
+  text_font_google   = google_font("Droid Serif"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
 
--   Hands on examples
--   Repo: https://github.com/skirmer/functions_r
--   Support Team for questions
 
-<div class="notes">
-</div>
+# Overview
 
-## What is a Function Anyway?
+-   Hands on examples   
+--
 
-![](function_diagram.png){width=80%}
+-   Repo: https://github.com/skirmer/functions_r   
+--
 
-<div class="notes">
+-   Support Team for questions   
+--
+
+
+***
+
+## Breakout Sections
+  - Work through examples in small groups
+  - 10 minute chunks
+
+---
+# What is a Function Anyway?
+
+![](function_diagram.png)
+
+???
 You have one thing, and you want to have another thing, so the function is your path to get there.
-</div>
 
-
-## Why Functions?
+---
+# Why Functions?
 
 -   Avoid repetition
 -   Share code with others
 -   Eventually build packages
 
-<div class="notes">
+???
 Those operations you want to run in order to get from what you have to what you need are useful to others!
 This framework is common to many programming languages
-</div>
 
-
-## Basic Structure
+---
+# Basic Structure
 
 ```{r, echo=TRUE, eval=FALSE}
 
@@ -50,62 +73,64 @@ myFunction <- function(){
 myFunction()
 ```
 
-<div class="notes">
+???
 This shell is what lets R know that you intend to create a function. 
 Now we need to add in the contents.
-</div>
 
-
-## Basic Structure
+---
+# Basic Structure
 
 ```{r, echo=TRUE, eval=FALSE}
 
 myFunction <- function(ARGUMENTS){
- ### <b>
-  ...
- ### </b> 
+  {{...}}
   return(OUTPUT)
 }
 
 myFunction(ARGUMENTS)
 ```
 
-<div class="notes">
-</div>
-
-
-## Basic Structure
+---
+# Basic Structure
 
 ```{r, echo=TRUE, eval=FALSE}
 
 myFunction <- function(a, b){
- ### <b>
-  c <- a*b
- ### </b> 
+  {{c <- a*b}}
   return(c)
 }
 
 myFunction(a = 2,b = 4)
 ```
 
-<div class="notes">
-</div>
 
-# Practice Break
+---
+class: inverse
+
+# Practice Break 1
 Open possible_dog_part1.R and follow the instructions.
 
-## Types
+- Beginner: Read the sample function, and interpret what it does.
+- Advanced: Take a bit of your own code and place it in a function structure. 
+
+---
+# Types
 - Logical or Boolean (TRUE, FALSE, 0, 1)
-- Integer (3, 7, 108)
-- Float or Numeric (1.6645, 3.14159, 987.99)
-- String or Character ("Hello", "a")
+- Integer (Numeric) (3, 7, 108)
+- Double or Float (Numeric) (1.6645, 3.14159, 987.99)
+- Character or String ("Hello", "a")
+- Closure (function) (`sum()`)
 
-<div class="notes">
+More info in help: `?type` or `?mode`
+
+Plus: list, complex, special, etc
+
+???
 Before we deep dive into these pieces, we have to make sure we understand types just a little.
-</div>
 
 
-## Arguments, or What Goes In
+---
+# Arguments, or What Goes In
 
 - Order and naming
 - Defaults
@@ -113,41 +138,47 @@ Before we deep dive into these pieces, we have to make sure we understand types 
 ```{r, echo=TRUE, eval=FALSE}
 
 myFunction <- function(a=1, b=1){
-
   ...
-
 myFunction(a = 2,b = 4)
 ```
 
-<div class="notes">
+???
 You can set default values for the arguments as shown
 Your arguments need to observe a specific type usually
-</div>
 
-# Practice Break
+---
+class: inverse
+
+# Practice Break 2
 Open possible_dog_part2.R and follow the instructions.
 
+- Beginner: Identify the changes in the example function. Try running it, and change the arguments.
+- Advanced: Add an argument to your function, and make it change the output. 
 
-## Returns, or What Comes Out
+---
+
+# Returns, or What Comes Out
 
 
 ```{r, echo=TRUE, eval=FALSE}
-
 myFunction <- function(a, b){
 ...
   return(c)
 }
-
 ```
 
-<div class="notes">
-</div>
 
-# Practice Break
+---
+class: inverse
+
+# Practice Break 3
 Open possible_dog_part3.R and follow the instructions.
 
+- Beginner: Identify the changes in the example function. What is it returning?
+- Advanced: Add a two-element return to your function. Remember that R does not allow multi-argument returns.
+---
 
-## Guardrails: Documentation
+# Guardrails: Documentation
 
 ```{r, echo=TRUE, eval=FALSE}
 #' myFunction
@@ -162,19 +193,22 @@ Open possible_dog_part3.R and follow the instructions.
 ```
 
 
-<div class="notes">
-</div>
+---
+class: inverse
 
-# Practice Break
+# Practice Break 4
 Open possible_dog_part4.R and follow the instructions.
 
+- Beginner: Fill in the blanks in the provided function documentation.
+- Advanced: Add documentation for your function, including arguments and returns.
 
-## Guardrails: Type Check
+---
+# Guardrails: Type Check
 
 ```{r, echo=TRUE, eval=FALSE}
 
 myFunction <- function(a, b){
-  if(!is.numeric(a)) stop("a must be a number")
+  if(!is.double(a)) stop("a must be a number")
   c <- a*b
   return(c)
 }
@@ -183,10 +217,20 @@ myFunction(a = 2,b = 4)
 #myFunction(a = TRUE, b = 4)
 ```
 
-<div class="notes">
-</div>
 
-## Guardrails: Tests
+---
+
+class: inverse
+
+# Practice Break 5
+Open possible_dog_part5.R and follow the instructions.
+
+- Beginner: Examine the type check included in the function. Pass arguments to the function that will violate it.
+- Advanced: Add a type check to your function.
+
+---
+
+# Guardrails: Tests
 
 ```{r, echo=TRUE, eval=TRUE}
 
@@ -205,11 +249,8 @@ test_that("Function returns correct value",
           })
 ```
 
-<div class="notes">
-</div>
-
-
-## Guardrails: Tests
+---
+# Guardrails: Tests
 
 ```{r, echo=TRUE, eval=TRUE}
 
@@ -221,11 +262,21 @@ test_that("Function returns expected error",
           })
 ```
 
-<div class="notes">
-</div>
+
+---
+
+class: inverse
+
+# Practice Break 6
+Open possible_dog_part6.R and follow the instructions.
+
+- Beginner: Fill in the argument value that will make the test pass, or change the test.
+- Advanced: Write a test for your function.
+
+---
 
 
-## Environment
+# Environments
 
 The function knows what exists inside itself, and what exists in the "global" environment.
 Outside the function only knows what exists in the "global".
@@ -236,9 +287,7 @@ Here, a, b, and c do not exist in the world outside our function.
 print(environment())
 print(objects())
 myFunction <- function(a, b){
- ### <b>
-  c <- a*b
- ### </b> 
+  {{c <- a*b}}
   print(environment())
   print(objects())
   return(c)
@@ -246,8 +295,8 @@ myFunction <- function(a, b){
 
 myFunction(a = 2,b = 4)
 ```
-
-## Global Environment
+---
+# Global Environment
 
 ```{r, echo=TRUE, eval=TRUE}
 
@@ -255,15 +304,13 @@ print(environment())
 print(objects())
 
 ```
-
-## Function Environment
+---
+# Function Environment
 
 ```{r, echo=TRUE, eval=TRUE}
 
 myFunction <- function(a, b){
- ### <b>
-  c <- a*b
- ### </b> 
+  {{c <- a*b}}
   print(environment())
   print(objects())
   return(c)
@@ -271,16 +318,16 @@ myFunction <- function(a, b){
 
 myFunction(a = 2,b = 4)
 ```
-
-## Exploring
+---
+# Exploring
 
 ```{r, echo=TRUE, eval=TRUE}
 dplyr::top_n
 
 ```
 
-
-## Combining Functions
+---
+# Combining Functions
 - A function can be an argument to another function
 - This way you can chain together elements powerfully
 
@@ -295,16 +342,14 @@ c
 ```
 
 
-<div class="notes">
-</div>
-
-## Conclusion
+---
+# Conclusion
 
 - Functions are a way of packaging small sections of code to reuse later
 - Functions accept input and return output, and contain code
 - Functions can have documentation and internal tests
-
-## Further Reading
+---
+# Further Reading
 * http://adv-r.had.co.nz/Functions.html
 * https://r4ds.had.co.nz/functions.html
 * https://nicercode.github.io/guides/functions/
