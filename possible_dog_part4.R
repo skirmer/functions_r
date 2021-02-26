@@ -1,9 +1,10 @@
 ### Beginner Task ###
 # Fill in the blanks in the docstrings
+# Discuss what changes you made with other group members.
 # https://www.guinnessworldrecords.com/news/2019/4/a-history-of-the-biggest-and-smallest-dog-breeds-from-giant-great-danes-to-tiny
 
 
-#' dogCheck
+#' Check if animal is likely a dog
 #'
 #' @param height_cm Integer. Dog's height from floor to shoulder, rounded to the nearest centimeter.
 #' @param has_fur Boolean. [INSERT DESCRIPTION HERE]
@@ -32,6 +33,7 @@ dogCheck(height_cm = 50, has_fur = TRUE)
 # Begin with the function you created in Parts 1-3. 
 # Add docstrings to explain what it does. 
 # Don't forget the inputs and returns!
+# If you have time, explain your code to other group members. 
 
 myFunction <- function(){
   

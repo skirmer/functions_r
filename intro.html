@@ -25,22 +25,30 @@ class: center, middle, inverse, title-slide
 
 # Overview
 
--   Hands on examples   
+-   Lecture alternating with breakouts for hands-on examples   
 --
 
 -   Repo: https://github.com/skirmer/functions_r   
 --
 
--   Support Team for questions   
+-   Support Team for questions/leading breakouts   
 --
 
-
+???
+Introductions for support team
 ***
 
 ## Breakout Sections
   - Work through examples in small groups
-  - 10 minute chunks
+  - 5-10 minute chunks
+  - Choose either Beginner or Advanced group
+    - Beginners will read provided function, and gradually edit it
+    - Advanced will write your own function, and fully develop it
 
+???
+If you have your own code, or some idea for a function, you can work with Advanced group to develop it into a full function
+If you don't have your own code or don't want to write it all yourself, work with Beginner
+You can change groups later!
 ---
 # What is a Function Anyway?
 
@@ -111,7 +119,8 @@ class: inverse
 Open possible_dog_part1.R and follow the instructions.
 
 - Beginner: Read the sample function, and interpret what it does.
-- Advanced: Take a bit of your own code and place it in a function structure. 
+  - Discuss the structure. Think about what might make it better or easier to use. 
+- Advanced: Take a bit of your own code and place it in a function structure. Change function name to something appropriate.
 
 ---
 # Types
@@ -127,24 +136,24 @@ Plus: list, complex, special, etc
 
 ???
 Before we deep dive into these pieces, we have to make sure we understand types just a little.
-
+While we aren't going to go deep in today, your arguments can be things like lists and dataframes as well as single items - you can get creative!
 
 ---
 # Arguments, or What Goes In
 
-- Order and naming
-- Defaults
+- Order and naming are important
+- Defaults can be set, not required
 
 
 ```r
-myFunction &lt;- function(a=1, b=1){
+*myFunction &lt;- function(a=1, b=1){
   ...
 myFunction(a = 2,b = 4)
 ```
 
 ???
 You can set default values for the arguments as shown
-Your arguments need to observe a specific type usually
+Your arguments need to observe a specific type usually (best practices)
 
 ---
 class: inverse
@@ -152,22 +161,32 @@ class: inverse
 # Practice Break 2
 Open possible_dog_part2.R and follow the instructions.
 
-- Beginner: Identify the changes in the example function. Try running it, and change the arguments.
+- Beginner: Identify the changes in the example function. Try running it, and change the arguments. 
+  - Discuss what change you made and what the effects were. What type/s can the function accept? What happens if you pass something else?
 - Advanced: Add an argument to your function, and make it change the output. 
 
+???
+If you weren't comfortable or were not challenged in the group you picked last time, you can switch!
 ---
 
 # Returns, or What Comes Out
 
+- Object (single) that you'll be able to use elsewhere
+- May be any of the types we previously discussed
+- Not required! Functions can do things besides return
 
 
 ```r
 myFunction &lt;- function(a, b){
 ...
-  return(c)
+*  return(c)
 }
 ```
 
+???
+Key - make sure the user of this function gets something they are reasonably expecting
+A function could change the state of an existing object without using a return (global env, will discuss)
+Single object return only in R
 
 ---
 class: inverse
@@ -176,14 +195,19 @@ class: inverse
 Open possible_dog_part3.R and follow the instructions.
 
 - Beginner: Identify the changes in the example function. What is it returning?
+  - Try changing the return, see what it does.
 - Advanced: Add a two-element return to your function. Remember that R does not allow multi-argument returns.
 ---
 
 # Guardrails: Documentation
 
+- Explain what the arguments and returns are
+- Demonstrate how the function is meant to be used
+- May include `@description` or other additional items 
+
 
 ```r
-#' myFunction
+#' Explain what my function does
 #'
 #' @param a Type. Description of what it represents.
 #' @param b Type. Description of what it represents.
@@ -194,6 +218,9 @@ Open possible_dog_part3.R and follow the instructions.
 #' \dontrun{myFunction(a = 5, b = 3)}
 ```
 
+???
+Be clear, but not too wordy
+Tell the user what they need to know in order to use the function and understand
 
 ---
 class: inverse
@@ -207,10 +234,13 @@ Open possible_dog_part4.R and follow the instructions.
 ---
 # Guardrails: Type Check
 
+- Setting an informative error helps the user
+- Checks can look at be more than just type
+
 
 ```r
 myFunction &lt;- function(a, b){
-  if(!is.double(a)) stop("a must be a number")
+*  if(!is.double(a)) stop("a must be a number")
   c &lt;- a*b
   return(c)
 }
@@ -219,6 +249,8 @@ myFunction(a = 2,b = 4)
 #myFunction(a = TRUE, b = 4)
 ```
 
+???
+User might be future you! 
 
 ---
 
@@ -228,11 +260,15 @@ class: inverse
 Open possible_dog_part5.R and follow the instructions.
 
 - Beginner: Examine the type check included in the function. Pass arguments to the function that will violate it.
-- Advanced: Add a type check to your function.
+  - Is the error informative? 
+- Advanced: Add a type check to your function's arguments. Make sure the error message is clear.
 
 ---
 
 # Guardrails: Tests
+
+- Vital for making packages later
+- Helps you ensure that changes have not broken expected behavior
 
 
 ```r
@@ -242,14 +278,20 @@ myFunction &lt;- function(a, b){
   c &lt;- a*b
   return(c)
 }
+```
 
+
+
+```r
 test_that("Function returns correct value",
           {
             product = myFunction(a = 2,b = 4)
             expect_equal(product, 8)
-            
           })
 ```
+
+???
+If the return is not in line with expectations, you can easily find out. 
 
 ---
 # Guardrails: Tests
@@ -260,10 +302,12 @@ library(testthat)
 
 test_that("Function returns expected error",
           {
-            expect_error(myFunction(a = TRUE, b = 4))
+*            expect_error(myFunction(a = TRUE, b = 4))
           })
 ```
 
+??? 
+Tests can check that it fails or errors when it's supposed to as well!
 
 ---
 
@@ -273,7 +317,9 @@ class: inverse
 Open possible_dog_part6.R and follow the instructions.
 
 - Beginner: Fill in the argument value that will make the test pass, or change the test.
+  - Discuss whether it is more sensible to change the argument or the test. 
 - Advanced: Write a test for your function.
+  - Do you want to test for expected error or for expected return?
 
 ---
 
@@ -300,6 +346,8 @@ myFunction(a = 2,b = 4)
 ---
 # Global Environment
 
+- No a, b, or c
+
 
 ```r
 print(environment())
@@ -316,8 +364,11 @@ print(objects())
 ```
 ## [1] "myFunction"
 ```
+
 ---
 # Function Environment
+
+- Here they are!
 
 
 ```r
@@ -332,7 +383,7 @@ myFunction(a = 2,b = 4)
 ```
 
 ```
-## &lt;environment: 0x7fd3e967dd30&gt;
+## &lt;environment: 0x7fb75bc6a9c0&gt;
 ## [1] "a" "b" "c"
 ```
 
@@ -340,8 +391,51 @@ myFunction(a = 2,b = 4)
 ## [1] 8
 ```
 ---
-# Exploring
+# Mixing Environments
 
+
+```r
+myFunction &lt;- function(a, b){
+*  d &lt;&lt;- a*b
+  print(environment())
+  print(objects())
+  return(c)
+}
+myFunction(a = 2,b = 4)
+```
+
+```
+## &lt;environment: 0x7fb75b695da8&gt;
+## [1] "a" "b"
+```
+
+```
+## function (...)  .Primitive("c")
+```
+
+```r
+print(environment())
+```
+
+```
+## &lt;environment: R_GlobalEnv&gt;
+```
+
+```r
+print(objects())
+```
+
+```
+## [1] "d"          "myFunction"
+```
+
+???
+Watch out how you use the double arrow!
+
+---
+# Exploring a Function
+
+- Just omit the parentheses
 
 ```r
 dplyr::top_n
@@ -364,7 +458,7 @@ dplyr::top_n
 ##         }
 ##     }, !!wt))
 ## }
-## &lt;bytecode: 0x7fd3db87d590&gt;
+## &lt;bytecode: 0x7fb73b1588d8&gt;
 ## &lt;environment: namespace:dplyr&gt;
 ```
 
@@ -372,6 +466,7 @@ dplyr::top_n
 # Combining Functions
 - A function can be an argument to another function
 - This way you can chain together elements powerfully
+- Helps readability to use functions!
 
 
 ```r
@@ -399,13 +494,15 @@ c
 
 - Functions are a way of packaging small sections of code to reuse later
 - Functions accept input and return output, and contain code
-- Functions can have documentation and internal tests
+- Documentation and internal tests make functions more useful and easier to work with
+
 ---
 # Further Reading
 * http://adv-r.had.co.nz/Functions.html
 * https://r4ds.had.co.nz/functions.html
 * https://nicercode.github.io/guides/functions/
 * https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Writing-your-own-functions
+* https://r-pkgs.org/man.html
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

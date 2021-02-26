@@ -1,10 +1,11 @@
 ### Beginner Task ###
 # This test will not pass. Fix the function or the test so that it passes.
+# Discuss the way you made it pass with other group members.
 # https://www.guinnessworldrecords.com/news/2019/4/a-history-of-the-biggest-and-smallest-dog-breeds-from-giant-great-danes-to-tiny
 
 library(testthat)
 
-#' dogCheck
+#' Check if animal is likely a dog
 #'
 #' @param height_cm Integer. Dog's height from floor to shoulder, rounded to the nearest centimeter.
 #' @param has_fur Boolean. Indicates whether the animal has fur.
@@ -41,6 +42,7 @@ test_that("Function returns correct value",
 # Begin with the function you created in Parts 1-5. 
 # Write a test for your function. See above for an example of a test.
 # Some test possibilities: expect_equal, expect_error, expect_length, expect_lt, expect_gt
+# If you have time, explain your code to other group members. 
 
 library(testthat)
 
