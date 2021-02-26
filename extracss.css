@@ -1,0 +1,15 @@
+.footer {
+    color: #23395b;
+    position: fixed;
+    top: 20px;
+    right: 50px;
+    text-align: right;
+    width: 100%;
+    font-size: 18px;
+}
+
+.footer a,
+.footer a:hover,
+.footer a:focus {
+    color: #23395b;
+}

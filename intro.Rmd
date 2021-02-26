@@ -1,19 +1,24 @@
 ---
-title: "Introduction to R Functions"
-subtitle: "R Ladies Chicago and R Ladies East Lansing"
-author: "Stephanie Kirmer <BR> [www.stephaniekirmer.com](http://www.stephaniekirmer.com) <BR>  @[data_stephanie](http://www.twitter.com/data_stephanie)"
-date: "February 26, 2021"
+title: 'Introduction to R Functions'
+subtitle: 'R Ladies Chicago and R Ladies East Lansing'
+author: 'Stephanie Kirmer <br> <a href="http://github.com/skirmer">`r icon::fontawesome(name="github")` skirmer</a><br> <a href="http://twitter.com/data_stephanie"> `r icon::fontawesome(name="twitter")` @data_stephanie</a><br> <a href="http://www.stephaniekirmer.com"> `r icon::fontawesome(name="link")` stephaniekirmer.com</a>'
+date: 'February 26, 2021'
 output:
   xaringan::moon_reader:
-    css: ['xaringan-themer.css'] 
+    css: ['xaringan-themer.css', 'extracss.css'] 
     nature:
       highlightLines: true
+    includes:
+      in_header: header.html  
+---
+layout: true
+.footer[<a href="https://github.com/skirmer/functions_r">`r icon::fontawesome(name="github")` github.com/skirmer/functions_r </a> | <a href="http://twitter.com/data_stephanie">`r icon::fontawesome(name="twitter")` @data_stephanie</a>]
 
 ---
-
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
 library(countdown)
+library(icon)
 
 style_duo_accent(
   primary_color = "#23395b",
@@ -23,6 +28,7 @@ style_duo_accent(
   code_font_google   = google_font("Fira Mono")
 )
 ```
+
 
 
 # Overview
@@ -335,8 +341,8 @@ myFunction <- function(a, b){
 ```{r, echo=TRUE, eval=TRUE}
 test_that("Function returns correct value",
           {
-            product = myFunction(a = 2,b = 4)
-            expect_equal(product, 8)
+            product = myFunction(a = 2,b = 4)#<<
+            expect_equal(product, 8)#<<
           })
 ```
 
@@ -482,7 +488,7 @@ c
 
 <img src="https://media.giphy.com/media/f7rDDvcOV9n8I/giphy.gif" style="width: 50%" />
 
-
+`r icon::fontawesome("link")` [www.stephaniekirmer.com](http://www.stephaniekirmer.com)  |  `r icon::fontawesome("twitter")` @[data_stephanie](http://www.twitter.com/data_stephanie)
 
 
 ---
