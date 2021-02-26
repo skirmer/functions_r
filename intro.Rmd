@@ -36,9 +36,13 @@ style_duo_accent(
 -   Support Team for questions/leading breakouts   
 --
 
+<img src="https://media.giphy.com/media/l46Cbqvg6gxGvh2PS/giphy.gif" style="width: 50%" />
+
+
 ???
 Introductions for support team
-***
+
+---
 
 ## Breakout Sections
   - Work through examples in small groups
@@ -46,6 +50,10 @@ Introductions for support team
   - Choose either Beginner or Advanced group
     - Beginners will read provided function, and gradually edit it
     - Advanced will write your own function, and fully develop it
+    
+    
+<img src="https://media.giphy.com/media/3jN3GziOKUEmI/giphy.gif" style="width: 30%" />
+
 
 ???
 If you have your own code, or some idea for a function, you can work with Advanced group to develop it into a full function   
@@ -66,6 +74,9 @@ You have one thing, and you want to have another thing, so the function is your 
 -   Avoid repetition
 -   Share code with others
 -   Eventually build packages
+
+<img src="https://media.giphy.com/media/20BoPFWiCG3K9GYABQ/giphy.gif" style="width: 40%" />
+
 
 ???
 Those operations you want to run in order to get from what you have to what you need are useful to others!   
@@ -141,6 +152,10 @@ More info in help: `?type` or `?mode`
 
 Plus: list, complex, special, etc
 
+<img src="https://media.giphy.com/media/ouE6OPO1MADM4/giphy.gif" style="width: 40%" />
+
+
+
 ???
 Before we deep dive into these pieces, we have to make sure we understand types just a little.   
 While we aren't going to go deep in today, your arguments can be things like lists and dataframes as well as single items - you can get creative!
@@ -157,6 +172,9 @@ While we aren't going to go deep in today, your arguments can be things like lis
   ...
 myFunction(a = 2,b = 4)
 ```
+
+<img src="https://media.giphy.com/media/XhAQgt6ytc6E8/giphy.gif" style="width: 40%" />
+
 
 ???
 You can set default values for the arguments as shown   
@@ -192,6 +210,9 @@ myFunction <- function(a, b){
   {{return(c)}}
 }
 ```
+
+<img src="https://media.giphy.com/media/ZaoNH308FHz7a/giphy.gif" style="width: 40%" />
+
 
 ???
 Key - make sure the user of this function gets something they are reasonably expecting   
@@ -232,6 +253,9 @@ countdown(minutes = 5, seconds = 0, left=0)
 #' \dontrun{myFunction(a = 5, b = 3)}
 ```
 
+<img src="https://media.giphy.com/media/lkdpUMrVSG9D9xiFt0/giphy.gif" style="width: 25%" />
+
+
 ???
 Be clear, but not too wordy   
 Tell the user what they need to know in order to use the function and understand
@@ -266,6 +290,11 @@ myFunction <- function(a, b){
 myFunction(a = 2,b = 4)
 #myFunction(a = TRUE, b = 4)
 ```
+
+
+
+<img src="https://media.giphy.com/media/zCpYQh5YVhdI1rVYpE/giphy.gif" style="width: 25%" />
+
 
 ???
 User might be future you! 
@@ -327,6 +356,8 @@ test_that("Function returns expected error",
           })
 ```
 
+
+<img src="https://media.giphy.com/media/LycfkVG4L6x0Y/giphy.gif" style="width: 50%" />
 
 ???
 
@@ -406,7 +437,7 @@ myFunction <- function(a, b){
   {{d <<- a*b}}
   print(environment())
   print(objects())
-  return(c)
+  return(d)
 }
 myFunction(a = 2,b = 4)
 print(environment())
@@ -448,6 +479,11 @@ c
 - Functions are a way of packaging small sections of code to reuse later
 - Functions accept input and return output, and contain code
 - Documentation and internal tests make functions more useful and easier to work with
+
+<img src="https://media.giphy.com/media/f7rDDvcOV9n8I/giphy.gif" style="width: 50%" />
+
+
+
 
 ---
 # Further Reading
