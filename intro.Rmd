@@ -13,6 +13,8 @@ output:
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
+library(countdown)
+
 style_duo_accent(
   primary_color = "#23395b",
   secondary_color = "#136f63",
@@ -40,7 +42,7 @@ Introductions for support team
 
 ## Breakout Sections
   - Work through examples in small groups
-  - 5-10 minute chunks
+  - 5-ish minute chunks
   - Choose either Beginner or Advanced group
     - Beginners will read provided function, and gradually edit it
     - Advanced will write your own function, and fully develop it
@@ -123,6 +125,10 @@ Open possible_dog_part1.R and follow the instructions.
   - Discuss the structure. Think about what might make it better or easier to use. 
 - Advanced: Take a bit of your own code and place it in a function structure. Change function name to something appropriate.
 
+```{r, echo=FALSE}
+countdown(minutes = 5, seconds = 0, left=0)
+```
+
 ---
 # Types
 - Logical or Boolean (TRUE, FALSE, 0, 1)
@@ -166,6 +172,10 @@ Open possible_dog_part2.R and follow the instructions.
   - Discuss what change you made and what the effects were. What type/s can the function accept? What happens if you pass something else?
 - Advanced: Add an argument to your function, and make it change the output. 
 
+```{r, echo=FALSE}
+countdown(minutes = 5, seconds = 0, left=0)
+```
+
 ???
 If you weren't comfortable or were not challenged in the group you picked last time, you can switch!
 ---
@@ -197,6 +207,11 @@ Open possible_dog_part3.R and follow the instructions.
 - Beginner: Identify the changes in the example function. What is it returning?
   - Try changing the return, see what it does.
 - Advanced: Add a two-element return to your function. Remember that R does not allow multi-argument returns.
+
+```{r, echo=FALSE}
+countdown(minutes = 5, seconds = 0, left=0)
+```
+
 ---
 
 # Guardrails: Documentation
@@ -230,6 +245,10 @@ Open possible_dog_part4.R and follow the instructions.
 - Beginner: Fill in the blanks in the provided function documentation.
 - Advanced: Add documentation for your function, including arguments and returns.
 
+```{r, echo=FALSE}
+countdown(minutes = 5, seconds = 0, left=0)
+```
+
 ---
 # Guardrails: Type Check
 
@@ -261,6 +280,10 @@ Open possible_dog_part5.R and follow the instructions.
 - Beginner: Examine the type check included in the function. Pass arguments to the function that will violate it.
   - Is the error informative? 
 - Advanced: Add a type check to your function's arguments. Make sure the error message is clear.
+
+```{r, echo=FALSE}
+countdown(minutes = 5, seconds = 0, left=0)
+```
 
 ---
 
@@ -318,6 +341,10 @@ Open possible_dog_part6.R and follow the instructions.
   - Discuss whether it is more sensible to change the argument or the test. 
 - Advanced: Write a test for your function.
   - Do you want to test for expected error or for expected return?
+
+```{r, echo=FALSE}
+countdown(minutes = 5, seconds = 0, left=0)
+```
 
 ---
 
