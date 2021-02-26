@@ -2,7 +2,7 @@
 
 This repo contains the materials for my 2 hour workshop on functions in R. Check out `intro.html` to see the materials for yourself!
 
-
+![](frontpage.png)
 
 ## Further Reading
 * http://adv-r.had.co.nz/Functions.html
