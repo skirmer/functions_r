@@ -2,7 +2,7 @@
 
 This repo contains the materials for my 2 hour workshop on functions in R. Visit https://skirmer.github.io/presentations/functions_with_r.html to see the live version!
 
-![https://skirmer.github.io/presentations/functions_with_r.html](frontpage.png)
+[![](frontpage.png)](https://skirmer.github.io/presentations/functions_with_r.html)
 
 ## Further Reading
 * http://adv-r.had.co.nz/Functions.html
