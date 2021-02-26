@@ -327,7 +327,9 @@ test_that("Function returns expected error",
           })
 ```
 
-??? 
+
+???
+
 Tests can check that it fails or errors when it's supposed to as well!
 
 ---
